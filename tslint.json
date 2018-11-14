@@ -1,5 +1,28 @@
 {
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "extends": [
+    "tslint:recommended",
+    "tslint-react",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "no-console": false,
+    "max-line-length": {
+			"options": [120]
+		},
+		"ordered-imports": false,
+        "linebreak-style": [true, "LF"],
+		"no-any": true,
+		"quotemark": [true, "single", "jsx-double"],
+		"indent": [true, "spaces"],
+		"semicolon": [false, "always", "ignore-interfaces"],
+		"trailing-comma": [true, {"singleline": "never"}],
+		"object-literal-sort-keys": false,
+		"interface-name": false,
+		"member-ordering": [true, {"order": ["private-static-method"]}],
+		"no-empty": [false],
+		"arrow-parens": false,
+		"max-classes-per-file": false
+  },
   "linterOptions": {
     "exclude": [
       "config/**/*.js",
