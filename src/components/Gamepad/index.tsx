@@ -64,16 +64,18 @@ class Gamepad extends React.Component<{}, Tank> {
         const moveDirection: Direction = typeof keyCode === 'string'
             ? keyCode : KEYS_CODES[keyCode]
 
-        this.setState(prevState => {
-            return {
-                x: action.x ? prevState.x + action.x : prevState.x,
-                y: action.y ? prevState.y + action.y : prevState.y,
-                direction: moveDirection,
-            }
-        }, () => {
-            console.log('this.state ', this.state)
-            socketService.move(this.state.id, this.state.direction)
-        })
+        if (action) {
+            this.setState(prevState => {
+                return {
+                    x: action.x ? prevState.x + action.x : prevState.x,
+                    y: action.y ? prevState.y + action.y : prevState.y,
+                    direction: moveDirection,
+                }
+            }, () => {
+                socketService.move(this.state.id, this.state.direction)
+            })
+        }
+
     }
 
     public render() {
