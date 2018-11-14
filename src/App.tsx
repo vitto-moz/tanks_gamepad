@@ -2,8 +2,15 @@ import * as React from 'react';
 import './App.css';
 
 import logo from './logo.svg';
+import socketService from './services/socketService';
 
 class App extends React.Component {
+
+  constructor(props: {}) {
+    super(props)
+    socketService.registerUser('test user')
+  }
+
   public render() {
     return (
       <div className="App">

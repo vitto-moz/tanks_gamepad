@@ -1,5 +1,5 @@
 import * as socketIo from "socket.io-client";
-import {ITanks} from './interfaces';
+// import {ITanks} from './interfaces';
 import SOCKET_EVENTS from './socketEvents';
 
 const SERVER_URL = "http://localhost:8080";
