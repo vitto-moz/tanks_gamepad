@@ -1,12 +1,12 @@
-import {ITank, direction, ITankConfig} from './interfaces';
+import {Direction, ITankConfig} from './interfaces';
 
-class Tank implements ITank {
+class Tank {
     public id: string
     public name: string
     public hp: number
     public x: number
     public y: number
-    public direction: direction
+    public direction: Direction
 
     constructor(tankConfig: ITankConfig) {
         this.id = tankConfig.id

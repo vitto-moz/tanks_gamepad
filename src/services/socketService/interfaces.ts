@@ -1,4 +1,4 @@
-export type direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
+import {Direction} from 'src/components/Gamepad/interfaces';
 
 export interface ITank {
     id: string
@@ -6,11 +6,9 @@ export interface ITank {
     hp: number
     x: number
     y: number
-    direction: direction
+    direction: Direction
 }
 
 export interface ITanks {
     [index: string]: ITank
 }
-
-export type directions =  {[k in direction]: direction}

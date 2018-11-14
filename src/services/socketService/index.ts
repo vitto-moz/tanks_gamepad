@@ -1,7 +1,7 @@
 import * as socketIo from 'socket.io-client'
 import SOCKET_EVENTS from './socketEvents'
-import {ITank} from 'src/components/Gamepad/interfaces';
-const SERVER_URL = 'http://localhost:8080'
+import {Direction} from 'src/components/Gamepad/interfaces';
+const SERVER_URL = 'http://192.168.1.132:8080'
 
 export class SocketService {
   private socket: SocketIOClient.Socket;
@@ -10,12 +10,13 @@ export class SocketService {
     this.socket = socketIo(SERVER_URL);
   }
 
-  public registerUser(name: string) {
-    this.socket.emit(SOCKET_EVENTS.REGISTER_USER, name);
+  public registerUser(name: string, callback: (id: string) => void) {
+    this.socket.emit(SOCKET_EVENTS.REGISTER_USER, name, callback);
   }
 
-  public move(tank: ITank) {
-    this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);
+  public move(id: string, direction: Direction) {
+    // this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);
+    this.socket.emit(SOCKET_EVENTS.MOVE, {id, direction});
   }
 }
 

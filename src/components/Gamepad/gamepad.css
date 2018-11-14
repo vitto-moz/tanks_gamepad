@@ -1,0 +1,4 @@
+.gamepadWrap {
+    display: flex;
+    flex-direction: column
+  }

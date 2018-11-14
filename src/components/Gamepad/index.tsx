@@ -1,7 +1,9 @@
 import * as React from 'react';
-import {IKeyActions, IKeysCodes, ITank} from './interfaces';
+import {IKeyActions, IKeysCodes, Direction} from './interfaces';
 import Tank from './tank.model';
+import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
+import './gamepad.css';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -20,9 +22,9 @@ const keysActions: IKeyActions = {
     UP: {y: -QUANTUM},
 }
 
-class Gamepad extends React.Component<{}, ITank> {
+class Gamepad extends React.Component<{}, Tank> {
 
-    public state: ITank = new Tank({
+    public state: Tank = new Tank({
         id: '111',
         name: 'test_tank',
         hp: 100,
@@ -35,22 +37,33 @@ class Gamepad extends React.Component<{}, ITank> {
     constructor(props: {}) {
         super(props)
         this.move = this.move.bind(this)
+        socketService.registerUser('test user', (id: string) => {
+            this.setState({id}, () => {
+                this.listenKeyboardEvents()
+            })
+        })
     }
 
-    public componentDidMount() {
+    private listenKeyboardEvents() {
         document.addEventListener('keydown', (event) => {
-          if (KEYS_CODES[event.which] === 'SPACE') {
-            // this.onFire()
-          } else {
-            this.move(event.which)
-          }
+            if (KEYS_CODES[event.which] === 'SPACE') {
+                // this.onFire()
+            } else {
+                this.move(event.which)
+            }
         });
-      }
-    
+    }
 
-    private move(keyCode: number) {
-        const action = keysActions[KEYS_CODES[keyCode]]
-        const moveDirection = KEYS_CODES[keyCode]
+    private move(keyCode: number | Direction) {
+        const action = typeof keyCode === 'string'
+            ? keysActions[keyCode]
+            : keysActions[KEYS_CODES[keyCode]]
+
+        // tslint:disable-next-line:no-debugger
+        // debugger
+        const moveDirection: Direction = typeof keyCode === 'string'
+            ? keyCode : KEYS_CODES[keyCode]
+
         this.setState(prevState => {
             return {
                 x: action.x ? prevState.x + action.x : prevState.x,
@@ -59,21 +72,21 @@ class Gamepad extends React.Component<{}, ITank> {
             }
         }, () => {
             console.log('this.state ', this.state)
-            socketService.move(this.state)
+            socketService.move(this.state.id, this.state.direction)
         })
     }
 
     public render() {
         return (
-            null
-            // <button
-            //     key="registerUserButton"
-            //     onClick={this.move}
-            //     style={{
-            //         position: 'absolute',
-            //         top: 10,
-            //         left: 10,
-            //     }} > start </button>
+            <div className="gamepadWrap">
+                <GamepadButton buttonName={'UP'} onClick={this.move} />
+                <div className="gamepadMiddleLineWrap">
+                    <GamepadButton buttonName={'LEFT'} onClick={this.move} />
+                    <GamepadButton buttonName={'RIGHT'} onClick={this.move} />
+                </div>
+                <GamepadButton buttonName={'DOWN'} onClick={this.move} />
+            </div>
+
         )
     }
 }

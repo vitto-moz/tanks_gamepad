@@ -1,8 +1,8 @@
 import { ITank } from './../../services/socketService/interfaces';
-export type direction = 'LEFT' | 'RIGHT' | 'UP' | 'DOWN' | 'SPACE'
+export type Direction = 'LEFT' | 'RIGHT' | 'UP' | 'DOWN' | 'SPACE'
 
 export interface IKeysCodes {
-    [index: string]: direction;
+    [index: string]: Direction;
 }
 
 export interface IKeyAction {
@@ -15,14 +15,14 @@ export interface IKeyActions {
 
 export interface IBullet {
     onFly: boolean;
-    direction: direction;
+    direction: Direction;
 }
 
 export interface ITank {
     hp: number
     x: number
     y: number
-    direction: direction
+    direction: Direction
 }
 
 export interface ITankConfig extends ITank {

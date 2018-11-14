@@ -1,13 +1,11 @@
 import * as React from 'react';
 import './App.css';
-import socketService from './services/socketService';
 import Gamepad from './components/Gamepad';
 
 class App extends React.Component {
 
   constructor(props: {}) {
     super(props)
-    socketService.registerUser('test user')
   }
 
   public render() {
