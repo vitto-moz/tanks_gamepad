@@ -1,7 +1,7 @@
 import * as socketIo from 'socket.io-client'
 import SOCKET_EVENTS from './socketEvents'
 import {Direction} from 'src/components/Gamepad/interfaces';
-const SERVER_URL = 'http://192.168.1.132:8080'
+const SERVER_URL = 'http://192.168.1.132:8080/'
 
 export class SocketService {
   private socket: SocketIOClient.Socket;
