@@ -49,7 +49,7 @@ class Gamepad extends React.Component<{}, Tank> {
     private listenKeyboardEvents() {
         document.addEventListener('keydown', (event) => {
             if (KEYS_CODES[event.which] === 'SPACE') {
-                // this.onFire()
+                this.fire()
             } else {
                 this.move(event.which)
             }
@@ -78,6 +78,10 @@ class Gamepad extends React.Component<{}, Tank> {
             })
         }
 
+    }
+
+    private fire() {
+        socketService.fire(this.state.id)
     }
 
     public render() {

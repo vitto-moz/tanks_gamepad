@@ -2,6 +2,7 @@ const SOCKET_EVENTS = {
     REGISTER_USER: 'REGISTER_USER',
     UPDATE_TANK: 'UPDATE_TANK',
     MOVE: 'MOVE',
+    FIRE: 'FIRE',
 }
 
 export default SOCKET_EVENTS

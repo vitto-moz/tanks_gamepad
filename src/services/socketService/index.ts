@@ -18,6 +18,11 @@ export class SocketService {
     // this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);
     this.socket.emit(SOCKET_EVENTS.MOVE, {id, direction});
   }
+
+  public fire(id: string) {
+    // this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);
+    this.socket.emit(SOCKET_EVENTS.FIRE, {id});
+  }
 }
 
 const socketService = new SocketService()
