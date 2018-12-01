@@ -28,7 +28,7 @@ class GamepadButton extends React.Component<Props, {}> {
         this.props.onClick(this.props.buttonName);
         this.pressInterval = setInterval(() => {
             this.props.onClick(this.props.buttonName)
-        }, 1000)
+        }, 250)
     }
 
     private onLongPressEnd() {

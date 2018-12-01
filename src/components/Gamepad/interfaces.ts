@@ -29,3 +29,10 @@ export interface ITankConfig extends ITank {
     id: string
     name: string
 }
+
+export type TeamId = 'YELLOW' | 'GREEN'
+
+export interface ITeams {
+    [index: string]: TeamId
+}
+

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IKeyActions, IKeysCodes, Direction} from './interfaces';
+import {IKeyActions, IKeysCodes, Direction, ITeams} from './interfaces';
 import Tank from './tank.model';
 // import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
@@ -14,7 +14,11 @@ const KEYS_CODES: IKeysCodes = {
     32: 'SPACE'
 };
 
-const QUANTUM = 100;
+const QUANTUM = 100
+const TEAMS: ITeams = {
+    YELLOW: 'YELLOW',
+    GREEN: 'GREEN'
+}
 
 const keysActions: IKeyActions = {
     DOWN: {y: +QUANTUM},
@@ -39,7 +43,7 @@ class Gamepad extends React.Component<{}, Tank> {
     constructor(props: {}) {
         super(props)
         this.move = this.move.bind(this)
-        socketService.registerUser('test user', (id: string) => {
+        socketService.registerUser('test user', TEAMS.YELLOW, (id: string) => {
             this.setState({id}, () => {
                 this.listenKeyboardEvents()
             })
