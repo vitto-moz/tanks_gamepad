@@ -1,5 +1,7 @@
 import { ITank } from './../../services/socketService/interfaces';
 export type Direction = 'LEFT' | 'RIGHT' | 'UP' | 'DOWN' | 'SPACE'
+export type Action = Direction | 'FIRE'
+
 
 export interface IKeysCodes {
     [index: string]: Direction;

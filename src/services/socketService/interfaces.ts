@@ -1,4 +1,4 @@
-import {Direction} from 'src/components/Gamepad/interfaces';
+import {Action} from 'src/components/Gamepad/interfaces';
 
 export interface ITank {
     id: string
@@ -6,7 +6,7 @@ export interface ITank {
     hp: number
     x: number
     y: number
-    direction: Direction
+    direction: Action
 }
 
 export interface ITanks {

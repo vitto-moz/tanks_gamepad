@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IKeyActions, IKeysCodes, Direction, ITeams} from './interfaces';
+import {IKeyActions, IKeysCodes, Action, ITeams} from './interfaces';
 import Tank from './tank.model';
 // import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
@@ -43,6 +43,7 @@ class Gamepad extends React.Component<{}, Tank> {
     constructor(props: {}) {
         super(props)
         this.move = this.move.bind(this)
+        this.fire = this.fire.bind(this)
         socketService.registerUser('test user', TEAMS.YELLOW, (id: string) => {
             this.setState({id}, () => {
                 this.listenKeyboardEvents()
@@ -60,14 +61,14 @@ class Gamepad extends React.Component<{}, Tank> {
         });
     }
 
-    private move(keyCode: number | Direction) {
+    private move(keyCode: number | Action) {
         const action = typeof keyCode === 'string'
             ? keysActions[keyCode]
             : keysActions[KEYS_CODES[keyCode]]
 
         // tslint:disable-next-line:no-debugger
         // debugger
-        const moveDirection: Direction = typeof keyCode === 'string'
+        const moveDirection: Action = typeof keyCode === 'string'
             ? keyCode : KEYS_CODES[keyCode]
 
         if (action) {
@@ -122,7 +123,7 @@ class Gamepad extends React.Component<{}, Tank> {
                             <div className="dpad dpad-center" />
                 </div>
                 <div className="btns-container">
-                    <button className="btnFire btn">F</button>
+                    <GamepadButton buttonName={'FIRE'} icon = { right } onClick={this.fire} />
                 </div>
             </div>
         )

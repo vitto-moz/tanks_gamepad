@@ -1,6 +1,6 @@
 import * as socketIo from 'socket.io-client'
 import SOCKET_EVENTS from './socketEvents'
-import {Direction, TeamId} from 'src/components/Gamepad/interfaces';
+import {Action, TeamId} from 'src/components/Gamepad/interfaces';
 const SERVER_URL = 'http://192.168.1.132:8080/'
 // const SERVER_URL = 'http://192.168.0.174:8080/'
 
@@ -15,10 +15,10 @@ export class SocketService {
     this.socket.emit(SOCKET_EVENTS.REGISTER_USER, name, teamId, callback);
   }
 
-    public move(id: string, direction: Direction) {
-        // this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);
-        this.socket.emit(SOCKET_EVENTS.MOVE, {id, direction});
-    }
+  public move(id: string, direction: Action) {
+    // this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);
+    this.socket.emit(SOCKET_EVENTS.MOVE, {id, direction});
+  }
 
     public fire(id: string) {
         // this.socket.emit(SOCKET_EVENTS.UPDATE_TANK, tank);

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import './gamepadButton.css'
-import {Direction} from '../interfaces';
+import {Action} from '../interfaces';
 
 interface Props {
-    buttonName: Direction
-    onClick: (buttonName: Direction) => void
+    buttonName: Action
+    onClick: (buttonName: Action) => void
+    icon: string
     customBtn: string
-    // icon: string
 }
 
 class GamepadButton extends React.Component<Props, {}> {
@@ -21,14 +21,20 @@ class GamepadButton extends React.Component<Props, {}> {
     }
 
     private onClick() {
-        this.props.onClick(this.props.buttonName)
+        if (this.props.buttonName) {
+            this.props.onClick(this.props.buttonName)
+        }
     }
 
     private onLongPress() {
-        this.props.onClick(this.props.buttonName);
-        this.pressInterval = setInterval(() => {
+        if (this.props.buttonName) {
             this.props.onClick(this.props.buttonName)
-        }, 250)
+            this.pressInterval = setInterval(() => {
+                if (this.props.buttonName) {
+                    this.props.onClick(this.props.buttonName)
+                }
+            }, 250)
+        }
     }
 
     private onLongPressEnd() {

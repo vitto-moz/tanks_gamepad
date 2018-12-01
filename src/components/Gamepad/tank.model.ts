@@ -1,4 +1,4 @@
-import {Direction, ITankConfig} from './interfaces';
+import {Action, ITankConfig} from './interfaces';
 
 class Tank {
     public id: string
@@ -6,7 +6,7 @@ class Tank {
     public hp: number
     public x: number
     public y: number
-    public direction: Direction
+    public direction: Action
 
     constructor(tankConfig: ITankConfig) {
         this.id = tankConfig.id
