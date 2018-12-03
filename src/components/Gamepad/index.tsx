@@ -87,6 +87,7 @@ class Gamepad extends React.Component<{}, Tank> {
     public render() {
         return (
             <div className="gamepadWrap">
+                <div className="dpadContainer">
                 <div className="gamepadUpDownKeys">
                 <GamepadButton buttonName={'UP'}
                                onClick={this.move}
@@ -104,7 +105,10 @@ class Gamepad extends React.Component<{}, Tank> {
                                    onClick={this.move}
                                    icon = { right } />
                 </div>
-
+                </div>
+                <div className="btns-container">
+                    <button className="btnFire btn">F</button>
+                </div>
             </div>
 
         )
