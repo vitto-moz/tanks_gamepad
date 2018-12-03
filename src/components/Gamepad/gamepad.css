@@ -39,6 +39,11 @@
     outline: none;
     border-bottom: 0.15em solid rgba(0,0,0,0.5);
 }
+.btn:active{
+    border-bottom: 0.15em solid transparent;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
 .btnFire{
     background-color: #ED1D29;
 }
