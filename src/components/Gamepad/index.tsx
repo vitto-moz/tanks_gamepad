@@ -112,9 +112,10 @@ class Gamepad extends React.Component<{}, Tank> {
                     </div>
                 </div>
                 <div className="btns-container">
-                    <button onClick={this.fire} className="btnFire btn">
+                    {/* <button onClick={this.fire} className="btnFire btn">
                         <img className="gamepadIcon" src={fire} />
-                    </button>
+                    </button> */}
+                    <GamepadButton buttonName={'FIRE'} icon={fire} onClick={this.fire} />
                 </div>
                 {/* <div className="btns-container">
                     <GamepadButton buttonName={'FIRE'} icon={fire} onClick={this.fire} />
