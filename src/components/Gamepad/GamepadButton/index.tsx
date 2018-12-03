@@ -5,11 +5,12 @@ import {Direction} from '../interfaces';
 interface Props {
     buttonName: Direction
     onClick: (buttonName: Direction) => void
+    icon: string
 }
 
 class GamepadButton extends React.Component<Props, {}> {
 
-    private pressInterval: NodeJS.Timeout
+    private pressInterval: NodeJS.Timeout;
 
     constructor(props: Props) {
         super(props)
@@ -40,7 +41,8 @@ class GamepadButton extends React.Component<Props, {}> {
                 onTouchEnd={this.onLongPressEnd}
                 onClick={this.onClick}
                 className="gamepadButton">
-                {this.props.buttonName}
+                {/*{this.props.buttonName}*/}
+                <img className = "gamepadIcon" src = { this.props.icon } />
             </button>
         )
     }

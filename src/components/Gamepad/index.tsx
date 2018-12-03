@@ -4,6 +4,7 @@ import Tank from './tank.model';
 import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
 import './gamepad.css';
+import { down, up, left, right } from '../../assets/icons/';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -20,7 +21,7 @@ const keysActions: IKeyActions = {
     LEFT: {x: -QUANTUM},
     RIGHT: {x: +QUANTUM},
     UP: {y: -QUANTUM},
-}
+};
 
 class Gamepad extends React.Component<{}, Tank> {
 
@@ -31,7 +32,8 @@ class Gamepad extends React.Component<{}, Tank> {
         x: 0,
         y: 0,
         direction: 'DOWN'
-    })
+    });
+
 
 
     constructor(props: {}) {
@@ -85,12 +87,28 @@ class Gamepad extends React.Component<{}, Tank> {
     public render() {
         return (
             <div className="gamepadWrap">
-                <GamepadButton buttonName={'UP'} onClick={this.move} />
-                <div className="gamepadMiddleLineWrap">
-                    <GamepadButton buttonName={'LEFT'} onClick={this.move} />
-                    <GamepadButton buttonName={'RIGHT'} onClick={this.move} />
+                <div className="dpadContainer">
+                <div className="gamepadUpDownKeys">
+                <GamepadButton buttonName={'UP'}
+                               onClick={this.move}
+                               icon = { up } />
+
+                    <GamepadButton buttonName={'DOWN'}
+                                   onClick={this.move}
+                                   icon = { down } />
                 </div>
-                <GamepadButton buttonName={'DOWN'} onClick={this.move} />
+                <div className="gamepadMiddleLineWrap">
+                    <GamepadButton buttonName={'LEFT'}
+                                   onClick={this.move}
+                                   icon = { left } />
+                    <GamepadButton buttonName={'RIGHT'}
+                                   onClick={this.move}
+                                   icon = { right } />
+                </div>
+                </div>
+                <div className="btns-container">
+                    <button className="btnFire btn">F</button>
+                </div>
             </div>
 
         )

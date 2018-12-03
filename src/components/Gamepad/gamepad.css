@@ -1,4 +1,52 @@
 .gamepadWrap {
-    display: flex;
-    flex-direction: column
+    background: #2b3334;
+    height: 280px;
+    position: relative;
+    width: 490px;
+    /*flex-direction: column*/
   }
+.dpadContainer{
+    bottom: 40px;
+    height: 200px;
+    left: 40px;
+    position: absolute;
+    width: 200px;
+}
+.btns-container{
+    bottom: 40px;
+    height: 200px;
+    right: 40px;
+    position: absolute;
+    width: 160px;
+}
+.gamepadUpDownKeys{
+    flex-direction: column
+}
+.gamepadMiddleLineWrap{
+    flex-direction: row;
+}
+.btn{
+    font-family: 'Work Sans', sans-serif;
+    display: inline-block;
+    border: 0;
+    background: #BAB9B9;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 2em;
+    width: 2em;
+    height: 2em;
+    font-size: 2em;
+    outline: none;
+    border-bottom: 0.15em solid rgba(0,0,0,0.5);
+}
+.btn:active{
+    border-bottom: 0.15em solid transparent;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+.btnFire{
+    background-color: #ED1D29;
+}
+.btn-circle{
+    color: #fff;
+}
