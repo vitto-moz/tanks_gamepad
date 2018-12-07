@@ -5,7 +5,7 @@ import {Action} from '../interfaces';
 interface Props {
     buttonName: Action
     onClick: (buttonName: Action) => void
-    icon: string
+    // icon: string
     customBtn: string
 }
 

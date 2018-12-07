@@ -4,7 +4,7 @@ import Tank from './tank.model';
 // import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
 import './gamepad.css';
-import {down, up, left, right, fire} from '../../assets/icons/';
+import GamepadButton from './GamepadButton';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -92,36 +92,44 @@ class Gamepad extends React.Component<{}, Tank> {
     public render() {
         return (
             <div className="gamepadWrap">
-                <div className="dpadContainer">
-                    <div className="gamepadUpDownKeys">
-                        <GamepadButton buttonName={'UP'}
-                            onClick={this.move}
-                            icon={up} />
-
-                        <GamepadButton buttonName={'DOWN'}
-                            onClick={this.move}
-                            icon={down} />
-                    </div>
-                    <div className="gamepadMiddleLineWrap">
-                        <GamepadButton buttonName={'LEFT'}
-                            onClick={this.move}
-                            icon={left} />
-                        <GamepadButton buttonName={'RIGHT'}
-                            onClick={this.move}
-                            icon={right} />
-                    </div>
+                <div className="dpad-container">
+                    <div className="dpad-backdrop" />
+                    <GamepadButton
+                        customBtn={'dpad dpad-up'}
+                        buttonName={'UP'}
+                        onClick={this.move} >
+                        <div className="arrow-up" />
+                        <div className="arrow-up2" />
+                    </GamepadButton>
+                    <GamepadButton
+                        customBtn={'dpad dpad-right'}
+                        buttonName={'RIGHT'}
+                        onClick={this.move}>
+                        <div className="arrow-right2" />
+                        <div className="arrow-right" />
+                    </GamepadButton>
+                    <GamepadButton
+                        customBtn={'dpad dpad-down'}
+                        buttonName={'DOWN'}
+                        onClick={this.move}>
+                        <div className="arrow-down2" />
+                        <div className="arrow-down" />
+                    </GamepadButton>
+                    <GamepadButton customBtn={'dpad dpad-left'}
+                        buttonName={'LEFT'}
+                        onClick={this.move}
+                    >
+                        <div className="arrow-left" />
+                        <div className="arrow-left2" />
+                    </GamepadButton>
+                    <div className="dpad dpad-center" />
                 </div>
                 <div className="btns-container">
-                    {/* <button onClick={this.fire} className="btnFire btn">
-                        <img className="gamepadIcon" src={fire} />
-                    </button> */}
-                    <GamepadButton buttonName={'FIRE'} icon={fire} onClick={this.fire} />
+                    <button className="btnFire btn" onClick={this.fire}>F</button>
                 </div>
-                {/* <div className="btns-container">
-                    <GamepadButton buttonName={'FIRE'} icon={fire} onClick={this.fire} />
-                </div> */}
             </div>
         )
+
     }
 }
 
