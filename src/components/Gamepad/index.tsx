@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {IKeyActions, IKeysCodes, Direction} from './interfaces';
 import Tank from './tank.model';
-import GamepadButton from './GamepadButton';
+// import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
 import './gamepad.css';
-import { down, up, left, right } from '../../assets/icons/';
+import GamepadButton from './GamepadButton';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -12,9 +12,9 @@ const KEYS_CODES: IKeysCodes = {
     38: 'UP',
     40: 'DOWN',
     32: 'SPACE'
-}
+};
 
-const QUANTUM = 100
+const QUANTUM = 100;
 
 const keysActions: IKeyActions = {
     DOWN: {y: +QUANTUM},
@@ -87,32 +87,42 @@ class Gamepad extends React.Component<{}, Tank> {
     public render() {
         return (
             <div className="gamepadWrap">
-                <div className="dpadContainer">
-                <div className="gamepadUpDownKeys">
-                <GamepadButton buttonName={'UP'}
-                               onClick={this.move}
-                               icon = { up } />
-
-                    <GamepadButton buttonName={'DOWN'}
-                                   onClick={this.move}
-                                   icon = { down } />
-                </div>
-                <div className="gamepadMiddleLineWrap">
-                    <GamepadButton buttonName={'LEFT'}
-                                   onClick={this.move}
-                                   icon = { left } />
-                    <GamepadButton buttonName={'RIGHT'}
-                                   onClick={this.move}
-                                   icon = { right } />
-                </div>
+                        <div className="dpad-container">
+                            <div className="dpad-backdrop"/>
+                            <GamepadButton
+                                customBtn = {'dpad dpad-up'}
+                                buttonName = {'UP'}
+                                           onClick = { this.move} >
+                                <div className="arrow-up"/>
+                                <div className="arrow-up2"/>
+                            </GamepadButton>
+                            <GamepadButton  customBtn = {'dpad dpad-right'}
+                                            buttonName = {'RIGHT'}
+                                            onClick = { this.move }>
+                                <div className="arrow-right2"/>
+                                <div className="arrow-right"/>
+                            </GamepadButton>
+                            <GamepadButton customBtn = {'dpad dpad-down'}
+                            buttonName={'DOWN'}
+                            onClick={this.move}>
+                                <div className="arrow-down2"/>
+                                <div className="arrow-down"/>
+                            </GamepadButton>
+                            <GamepadButton customBtn={'dpad dpad-left'}
+                                           buttonName={'LEFT'}
+                                           onClick={this.move}
+                            >
+                                <div className="arrow-left"/>
+                                <div className="arrow-left2" />
+                            </GamepadButton>
+                            <div className="dpad dpad-center" />
                 </div>
                 <div className="btns-container">
                     <button className="btnFire btn">F</button>
                 </div>
             </div>
-
         )
     }
 }
 
-export default Gamepad
+export default Gamepad;
