@@ -115,7 +115,8 @@ class Gamepad extends React.Component<{}, Tank> {
                         <div className="arrow-down2" />
                         <div className="arrow-down" />
                     </GamepadButton>
-                    <GamepadButton customBtn={'dpad dpad-left'}
+                    <GamepadButton 
+                        customBtn={'dpad dpad-left'}
                         buttonName={'LEFT'}
                         onClick={this.move}
                     >
@@ -125,7 +126,10 @@ class Gamepad extends React.Component<{}, Tank> {
                     <div className="dpad dpad-center" />
                 </div>
                 <div className="btns-container">
-                    <button className="btnFire btn" onClick={this.fire}>F</button>
+                    <GamepadButton
+                        customBtn="btnFire btn"
+                        buttonName={'FIRE'}
+                        onClick={this.fire}/>
                 </div>
             </div>
         )
