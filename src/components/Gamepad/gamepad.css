@@ -1,4 +1,225 @@
 .gamepadWrap {
-    display: flex;
-    flex-direction: column
+    background: #66CDAA;
+    height: 280px;
+    position: relative;
+    width: 490px;
+    /*flex-direction: column*/
   }
+.dpadContainer{
+    bottom: 40px;
+    height: 200px;
+    left: 40px;
+    position: absolute;
+    width: 200px;
+}
+.btns-container{
+    bottom: 40px;
+    height: 200px;
+    right: 40px;
+    position: absolute;
+    width: 160px;
+}
+.btn{
+    font-family: 'Work Sans', sans-serif;
+    display: inline-block;
+    border: 0;
+    background: #BAB9B9;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 2em;
+    width: 2em;
+    height: 2em;
+    font-size: 2em;
+    outline: none;
+    border-bottom: 0.15em solid rgba(0,0,0,0.5);
+}
+.btn:active{
+    border-bottom: 0.15em solid transparent;
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+}
+.btnFire{
+    background-color: #ED1D29;
+}
+.btn-circle{
+    color: #fff;
+}
+/* D-PAD */
+
+.dpad-container {
+    bottom: 40px;
+    height: 200px;
+    left: 40px;
+    position: absolute;
+    width: 200px;
+}
+
+.dpad-backdrop {
+    background: #CFD8DC;
+    border-radius: 10px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    width: 80px;
+}
+
+.dpad-backdrop::after {
+    background: #CFD8DC;
+    border-radius: 10px;
+    content: '';
+    display: block;
+    height: 80px;
+    left: -60px;
+    position: absolute;
+    top: 60px;
+    width: 200px;
+}
+
+.dpad {
+    background: #202020;
+    box-shadow: 0 1px 10px #37474F;
+    height: 60px;
+    position: absolute;
+    width: 60px;
+}
+
+.dpad-up {
+    border-radius: 5px 5px 0 0;
+    bottom: 130px;
+    left: 70px;
+}
+
+.dpad-right {
+    border-radius: 0 5px 5px 0;
+    bottom: 70px;
+    left: 130px;
+}
+
+.dpad-down {
+    border-radius: 0 0 5px 5px;
+    bottom: 10px;
+    left: 70px;
+}
+
+.dpad-left {
+    border-radius: 5px 0 0 5px;
+    bottom: 70px;
+    left: 10px;
+}
+
+.dpad-center {
+    border: #202020 1px solid;
+    border-radius: 1px;
+    bottom: 69px;
+    box-shadow: none;
+    left: 69px;
+}
+
+/* D-PAD arrows */
+
+.arrow-up {
+    border-bottom: 24px solid #fff;
+    border-left: 24px solid transparent;
+    border-right: 24px solid transparent;
+    height: 0;
+    margin: 20px auto 0;
+    width: 0;
+}
+
+.arrow-up2 {
+    background: #fff;
+    height: 12px;
+    margin: -2px auto 0;
+    width: 24px;
+}
+
+.arrow-right {
+    border-bottom: 24px solid transparent;
+    border-left: 24px solid #fff;
+    border-top: 24px solid transparent;
+    height: 0;
+    left: 16px;
+    position: absolute;
+    top: 6px;
+    width: 0;
+}
+
+.arrow-right2 {
+    background: #fff;
+    height: 24px;
+    margin: 18px 0 0 6px;
+    width: 12px;
+}
+
+.arrow-down {
+    border-left: 24px solid transparent;
+    border-right: 24px solid transparent;
+    border-top: 24px solid #fff;
+    height: 0;
+    margin: 0 auto;
+    width: 0;
+}
+
+.arrow-down2 {
+    background: #fff;
+    height: 12px;
+    margin: 6px auto -2px;
+    width: 24px;
+}
+
+.arrow-left {
+    border-bottom: 24px solid transparent;
+    border-right: 24px solid #fff;
+    border-top: 24px solid transparent;
+    height: 0;
+    margin: 6px 0 0 20px;
+    width: 0;
+}
+
+.arrow-left2 {
+    background: #fff;
+    height: 24px;
+    margin: 0 auto;
+    position: absolute;
+    right: 6px;
+    top: 18px;
+    width: 12px;
+}
+
+/* Active arrows */
+
+.dpad:active {
+    background-color: #303030;
+}
+
+.dpad:active .arrow-up {
+    border-bottom-color: #00FF7F;
+}
+
+.dpad:active .arrow-up2 {
+    background-color: #00FF7F;
+}
+
+.dpad:active .arrow-right {
+    border-left-color: #00FF7F;
+}
+
+.dpad:active .arrow-right2 {
+    background-color: #00FF7F;
+}
+
+.dpad:active .arrow-down {
+    border-top-color: #00FF7F;
+}
+
+.dpad:active .arrow-down2 {
+    background-color: #00FF7F;
+}
+
+.dpad:active .arrow-left {
+    border-right-color: #00FF7F;
+}
+
+.dpad:active .arrow-left2 {
+    background-color: #00FF7F;
+}

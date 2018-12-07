@@ -5,11 +5,13 @@ import {Direction} from '../interfaces';
 interface Props {
     buttonName: Direction
     onClick: (buttonName: Direction) => void
+    customBtn: string
+    // icon: string
 }
 
 class GamepadButton extends React.Component<Props, {}> {
 
-    private pressInterval: NodeJS.Timeout
+    private pressInterval: NodeJS.Timeout;
 
     constructor(props: Props) {
         super(props)
@@ -23,7 +25,7 @@ class GamepadButton extends React.Component<Props, {}> {
     }
 
     private onLongPress() {
-        this.props.onClick(this.props.buttonName)
+        this.props.onClick(this.props.buttonName);
         this.pressInterval = setInterval(() => {
             this.props.onClick(this.props.buttonName)
         }, 1000)
@@ -34,14 +36,17 @@ class GamepadButton extends React.Component<Props, {}> {
     }
 
     public render() {
+        const { children, customBtn } = this.props;
         return (
-            <button
+            <div
                 onTouchStart={this.onLongPress}
                 onTouchEnd={this.onLongPressEnd}
                 onClick={this.onClick}
-                className="gamepadButton">
-                {this.props.buttonName}
-            </button>
+                className = { customBtn }>
+                {/*{this.props.buttonName}*/}
+                {/*<img className = "gamepadIcon" src = { this.props.icon } />*/}
+                {children}
+            </div>
         )
     }
 }
