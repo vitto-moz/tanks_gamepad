@@ -1,6 +1,10 @@
-.gamepadButton {
-  width: 100px;
-  height: 100px;
+/*.gamepadButton {*/
+  /*width: 100px;*/
+  /*height: 100px;*/
+/*}*/
+.gamepadIcon{
+  width: 30px;
+  height: 30px;
 }
 .gamepadIcon{
   width: 30px;
