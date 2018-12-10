@@ -1,9 +1,13 @@
 .gamepadWrap {
     background: #66CDAA;
-    height: 280px;
     position: relative;
-    width: 490px;
     /*flex-direction: column*/
+    position: relative;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 .dpadContainer{
     bottom: 40px;
@@ -13,11 +17,13 @@
     width: 200px;
 }
 .btns-container{
-    bottom: 40px;
     height: 200px;
-    right: 40px;
+    right: 80px;
     position: absolute;
     width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .btn{
     font-family: 'Work Sans', sans-serif;
@@ -49,7 +55,6 @@
 /* D-PAD */
 
 .dpad-container {
-    bottom: 40px;
     height: 200px;
     left: 40px;
     position: absolute;
