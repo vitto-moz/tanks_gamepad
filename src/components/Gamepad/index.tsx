@@ -5,7 +5,7 @@ import Tank from './tank.model';
 import socketService from 'src/services/socketService';
 import './gamepad.css';
 import GamepadButton from './GamepadButton';
-import {TEAMS, SKIN_URL} from './constants';
+import {SKIN_URL} from './constants';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -47,7 +47,11 @@ class Gamepad extends React.Component<{}, Tank> {
         this.move = this.move.bind(this)
         this.fire = this.fire.bind(this)
         if (this.state.teamId && this.state.name) {
-            socketService.registerUser(this.state.name, TEAMS.YELLOW, (id: string) => {
+            socketService.registerUser(
+                this.state.name, 
+                this.state.teamId, 
+                this.state.skinUrl,
+                (id: string) => {
                 this.setState({id}, () => {
                     this.listenKeyboardEvents()
                 })
