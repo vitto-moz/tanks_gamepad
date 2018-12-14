@@ -1,10 +1,11 @@
 import * as React from 'react';
-import {IKeyActions, IKeysCodes, Action, ITeams} from './interfaces';
+import {IKeyActions, IKeysCodes, Action} from './interfaces';
 import Tank from './tank.model';
 // import GamepadButton from './GamepadButton';
 import socketService from 'src/services/socketService';
 import './gamepad.css';
 import GamepadButton from './GamepadButton';
+import {TEAMS, SKIN_URL} from './constants';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -15,10 +16,6 @@ const KEYS_CODES: IKeysCodes = {
 };
 
 const QUANTUM = 100
-const TEAMS: ITeams = {
-    YELLOW: 'YELLOW',
-    GREEN: 'GREEN'
-}
 
 const keysActions: IKeyActions = {
     DOWN: {y: +QUANTUM},
@@ -30,25 +27,32 @@ const keysActions: IKeyActions = {
 class Gamepad extends React.Component<{}, Tank> {
 
     public state: Tank = new Tank({
-        id: '111',
-        name: 'test_tank',
+        id: '',
+        name: this.getTeamId('name'),
         hp: 100,
         x: 0,
         y: 0,
-        direction: 'DOWN'
+        direction: 'DOWN',
+        skinUrl: SKIN_URL,
+        teamId: this.getTeamId('teamId')
     });
 
-
+    private getTeamId(paramName: string): string | null {
+        const urlParams = new URLSearchParams(window.location.search)
+        return urlParams.get(paramName)
+    }
 
     constructor(props: {}) {
         super(props)
         this.move = this.move.bind(this)
         this.fire = this.fire.bind(this)
-        socketService.registerUser('test user', TEAMS.YELLOW, (id: string) => {
-            this.setState({id}, () => {
-                this.listenKeyboardEvents()
+        if (this.state.teamId && this.state.name) {
+            socketService.registerUser(this.state.name, TEAMS.YELLOW, (id: string) => {
+                this.setState({id}, () => {
+                    this.listenKeyboardEvents()
+                })
             })
-        })
+        }
     }
 
     private listenKeyboardEvents() {
@@ -115,7 +119,7 @@ class Gamepad extends React.Component<{}, Tank> {
                         <div className="arrow-down2" />
                         <div className="arrow-down" />
                     </GamepadButton>
-                    <GamepadButton 
+                    <GamepadButton
                         customBtn={'dpad dpad-left'}
                         buttonName={'LEFT'}
                         onClick={this.move}
@@ -129,7 +133,7 @@ class Gamepad extends React.Component<{}, Tank> {
                     <GamepadButton
                         customBtn="btnFire btn"
                         buttonName={'FIRE'}
-                        onClick={this.fire}/>
+                        onClick={this.fire} />
                 </div>
             </div>
         )
