@@ -3,6 +3,7 @@ const SOCKET_EVENTS = {
     UPDATE_TANK: 'UPDATE_TANK',
     MOVE: 'MOVE',
     FIRE: 'FIRE',
+    UPDATE: 'UPDATE',
 }
 
 export default SOCKET_EVENTS

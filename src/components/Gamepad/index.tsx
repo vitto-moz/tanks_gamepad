@@ -6,6 +6,7 @@ import socketService from 'src/services/socketService';
 import './gamepad.css';
 import GamepadButton from './GamepadButton';
 import {SKIN_URL} from './constants';
+import {IGameState} from 'src/services/socketService/interfaces';
 
 const KEYS_CODES: IKeysCodes = {
     37: 'LEFT',
@@ -57,6 +58,10 @@ class Gamepad extends React.Component<{}, Tank> {
                 })
             })
         }
+        socketService.onUpdate((gameState: IGameState) => {
+            // console.log('gameState ', gameState)
+            // this.setState({gameState});
+        });
     }
 
     private listenKeyboardEvents() {
